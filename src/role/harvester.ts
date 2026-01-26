@@ -26,9 +26,14 @@ const harvester = {
         
         } else if (creep.memory.mode === 'CARRYING') {
         
-            const structures = creep.room.find(FIND_STRUCTURES,{filter : (structure) => {return structure.structureType === STRUCTURE_SPAWN || structure.structureType === STRUCTURE_EXTENSION}});
+            const structures = creep.room.find(FIND_STRUCTURES,{filter : (structure) => {
+                return (structure.structureType === STRUCTURE_SPAWN || 
+                structure.structureType === STRUCTURE_EXTENSION) && 
+                ((structure as StructureSpawn | StructureExtension).store?.getFreeCapacity(RESOURCE_ENERGY) ?? 0) >0}});
             
             if (structures.length > 0){
+                       
+                const target = structures[0] as StructureSpawn | StructureExtension;
             
                 if (creep.transfer(structures[0],RESOURCE_ENERGY) === ERR_NOT_IN_RANGE){
                 

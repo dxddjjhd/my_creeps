@@ -13,7 +13,7 @@ export const loop = errorMapper(() => {
 
 
     qc.run('upgrader',1);
-//    qc.run('builder',2);
+    qc.run('builder',1);
     qc.run('harvester',2);
 
 

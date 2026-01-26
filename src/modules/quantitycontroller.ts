@@ -1,4 +1,4 @@
-//import sc from './spawncontroller'
+import sc from './spawncontroller'
 
 const qc = {
 
@@ -9,9 +9,8 @@ const qc = {
                 return creep.memory.role === type
             }).length < creepnumber
         ){
-            
-            const name :string ='creep' + Game.time;
-            Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE,MOVE],name,{memory:{role:type}});
+                       
+            sc.spawn('Spawn1',type);
         }
     }
 };
