@@ -11,11 +11,13 @@ const builder = {
         } else if (creep.store.getFreeCapacity() === creep.store.getCapacity()){
         
             creep.memory.mode = 'HARVESTING';
+            
+            
         }
         
         
-        if (creep.memory.mode === 'BUILDING'||'UPGRADING'){
-        
+        if (creep.memory.mode === 'BUILDING' || creep.memory.mode === 'UPGRADING'){
+            
             const construction = creep.room.find(FIND_CONSTRUCTION_SITES)
             
             if (construction.length > 0){
@@ -31,7 +33,9 @@ const builder = {
             }
             
         } else if (creep.memory.mode === 'HARVESTING'){
-            
+        
+               
+                    
             const sources = creep.room.find(FIND_SOURCES);
             
             if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
