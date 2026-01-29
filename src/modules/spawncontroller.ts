@@ -1,6 +1,9 @@
+import ct from '@/constants'
+
+
 const sc = {
 
-    spawn : (spawnname:string,type:'upgrader'|'harvester'|'builder'): void => {
+    spawn : (spawnname:string,type:'upgrader'|'harvester'|'builder'|'worker'): void => {
 
         if (Game.spawns[spawnname]){
         
@@ -18,7 +21,7 @@ const sc = {
                     
                     
         
-                spawn.spawnCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE],newname,{ memory : { role : type}});
+                spawn.spawnCreep(ct.creep[type],newname,{ memory : { role : type}});
         
             } else if (spawning !== null){
         

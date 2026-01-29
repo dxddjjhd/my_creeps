@@ -1,4 +1,5 @@
-import upgrader from './upgrader'
+import harvester from './harvester'
+import nge from './newft/newgetenergy'
 
 const builder = {
 
@@ -16,7 +17,7 @@ const builder = {
         }
         
         
-        if (creep.memory.mode === 'BUILDING' || creep.memory.mode === 'UPGRADING'){
+        if (creep.memory.mode === 'BUILDING' || creep.memory.mode === 'UPGRADING' || creep.memory.mode === 'CARRYING'){
             
             const construction = creep.room.find(FIND_CONSTRUCTION_SITES)
             
@@ -29,20 +30,14 @@ const builder = {
                 }
             } else if (construction.length === 0){
                 
-                upgrader.run(creep,0);
+                harvester.run(creep);
             }
             
         } else if (creep.memory.mode === 'HARVESTING'){
         
                
-                    
-            const sources = creep.room.find(FIND_SOURCES);
+            nge.run(creep);                
             
-            if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-                
-                creep.moveTo(sources[0]);  
-            
-            }
         }
     }
 };

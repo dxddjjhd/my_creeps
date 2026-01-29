@@ -1,5 +1,5 @@
 import upgrader from './upgrader'
-
+import nge from './newft/newgetenergy'
 
 const harvester = {
 
@@ -17,14 +17,9 @@ const harvester = {
         
         if (creep.memory.mode === 'HARVESTING'){
         
-            const sources = creep.room.find(FIND_SOURCES);
-            
-            if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-                
-                creep.moveTo(sources[0]);
-            }
+            nge.run(creep);
         
-        } else if (creep.memory.mode === 'CARRYING') {
+        } else if (creep.memory.mode === 'CARRYING' || creep.memory.mode === 'UPGRADING') {
         
             const structures = creep.room.find(FIND_STRUCTURES,{filter : (structure) => {
                 return (structure.structureType === STRUCTURE_SPAWN || 
@@ -41,6 +36,9 @@ const harvester = {
                 
                 }
             
+            } else {
+            
+                upgrader.run(creep);
             }
         
         }

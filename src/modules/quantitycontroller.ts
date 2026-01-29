@@ -2,7 +2,7 @@ import sc from './spawncontroller'
 
 const qc = {
 
-    run : (type:'upgrader'|'harvester'|'builder',creepnumber: number) => {
+    run : (type:'upgrader'|'harvester'|'builder'|'worker',creepnumber: number) => {
     
         if (
             Object.values(Game.creeps).filter((creep) => {
