@@ -3,20 +3,20 @@ import qc from './modules/quantitycontroller'
 import upgrader from './role/upgrader'
 import builder from './role/builder'
 import mc from './modules/memoryclear'
-import harvester from './role/harvester'
 import worker from './role/worker'
+import carrier from './role/carrier'
 
 export const loop = errorMapper(() => {
     
 
     mc.run()
-
+    
 
     qc.run('upgrader',1);
     qc.run('builder',1);
-    qc.run('harvester',1);
+    qc.run('carrier',1);
     qc.run('worker',1);
-
+    
     
     for (let name in Game.creeps){
     
@@ -29,18 +29,18 @@ export const loop = errorMapper(() => {
         }
         
         else if (creep.memory.role === 'builder'){
-        
+            
             builder.run(creep);
         }
         
-        else if (creep.memory.role === 'harvester'){
+        else if (creep.memory.role === 'carrier'){
         
-            harvester.run(creep);
+            carrier.run(creep);
         
         }
         
         else if (creep.memory.role === 'worker'){
-        
+            
             worker.run(creep);
         
         }

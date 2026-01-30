@@ -1,7 +1,7 @@
 import upgrader from './upgrader'
 import nge from './newft/newgetenergy'
 
-const harvester = {
+const carrier = {
 
     run : (creep : Creep) => {
     
@@ -48,4 +48,4 @@ const harvester = {
 };
 
 
-export default harvester;
+export default carrier;

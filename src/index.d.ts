@@ -6,7 +6,7 @@ interface CreepMemory {
     /**
     该 creep 的角色
     **/
-    role?: 'upgrader'|'harvester'|'builder'|'worker';
+    role?: 'upgrader'|'harvester'|'builder'|'worker'|'carrier';
     
 }
 

@@ -3,7 +3,7 @@ import ct from '@/constants'
 
 const sc = {
 
-    spawn : (spawnname:string,type:'upgrader'|'harvester'|'builder'|'worker'): void => {
+    spawn : (spawnname:string,type:'upgrader'|'harvester'|'builder'|'worker'|'carrier'): void => {
 
         if (Game.spawns[spawnname]){
         

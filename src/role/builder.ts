@@ -1,4 +1,4 @@
-import harvester from './harvester'
+import harvester from './carrier'
 import nge from './newft/newgetenergy'
 
 const builder = {
