@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=VSCode
+Comment=Code Editing. No sandbox. Redefined.
+GenericName=Text Editor
+Exec=/usr/bin/code_ori --no-sandbox --unity-launch  --user-data-dir=/home/droidvm/.vscode %F
+Icon=vscode
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;application/x-code-workspace;
+Actions=new-empty-window;
+Keywords=vscode;
+
+X-Desktop-File-Install-Version=0.26
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/usr/bin/code_ori --no-sandbox --unity-launch  --user-data-dir=/home/droidvm/.vscode --new-window %F
+Icon=com.visualstudio.code
