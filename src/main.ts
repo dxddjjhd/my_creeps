@@ -25,12 +25,10 @@ export const loop = errorMapper(() => {
         }
     }
 
-
-
-    qc.run('upgrader',2);
-    qc.run('builder',1);
     qc.run('carrier',1);
     qc.run('worker',1);
+    qc.run('upgrader',1);
+    qc.run('builder',2);
     qc.run('repairer',1);
 
     

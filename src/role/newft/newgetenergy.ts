@@ -21,6 +21,9 @@ const nge = {
                     creep.moveTo(resource[0]);
                 }    
             
+            } else if (resource.length === 0){
+
+                creep.moveTo(Game.spawns[0]);
             }
             
             nh.run(creep);

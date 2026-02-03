@@ -1,4 +1,4 @@
-import harvester from './carrier'
+import carrier from './carrier'
 import nge from './newft/newgetenergy'
 
 const builder = {
@@ -21,12 +21,14 @@ const builder = {
             
             const construction = creep.room.find(FIND_CONSTRUCTION_SITES)
             const sources = creep.room.find(FIND_MY_STRUCTURES,{filter:(structure) => 
-                {return structure.structureType === STRUCTURE_SPAWN || 
-                    structure.structureType === STRUCTURE_EXTENSION && 
+                {return (structure.structureType === STRUCTURE_SPAWN || 
+                    structure.structureType === STRUCTURE_EXTENSION) && 
                     (structure.store.getFreeCapacity()??0) > 0
                 }})
+            
+            
             if (sources.length > 0){
-                harvester.run(creep);
+                carrier.run(creep);
             
             }else if (construction.length > 0){
             
@@ -37,7 +39,7 @@ const builder = {
                 }
             } else if (construction.length === 0){
                 
-                harvester.run(creep);
+                carrier.run(creep);
             }
             
         } else if (creep.memory.mode === 'HARVESTING'){

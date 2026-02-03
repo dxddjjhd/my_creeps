@@ -10,7 +10,8 @@ const worker = {
             if (creep.pos.x ===containers[0].pos.x && 
                 creep.pos.y === containers[0].pos.y
             ){
-
+                
+                
                 creep.harvest(sources[0]);
             
         
