@@ -7,12 +7,22 @@ const nge = {
     
         const containers = creep.room.find(FIND_STRUCTURES,{filter : (container) => {return container.structureType === STRUCTURE_CONTAINER && container.store.getUsedCapacity(RESOURCE_ENERGY) > 0}});
             
-        if (containers){
+        if (containers.length > 0){
             if (creep.withdraw(containers[0],RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
                 
                 creep.moveTo(containers[0]);
             }
         } else if(containers.length === 0){
+            const resource = creep.room.find(FIND_DROPPED_RESOURCES);
+            if (resource.length > 0){
+
+                if (creep.pickup(resource[0]) === ERR_NOT_IN_RANGE){
+
+                    creep.moveTo(resource[0]);
+                }    
+            
+            }
+            
             nh.run(creep);
         }
     

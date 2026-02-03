@@ -25,6 +25,8 @@ const Upgrader = {
             
         } else if (creep.memory.mode === 'HARVESTING') {
         
+            
+            
             nge.run(creep);
             
         }

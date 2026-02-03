@@ -5,6 +5,9 @@ import builder from './role/builder'
 import mc from './modules/memoryclear'
 import worker from './role/worker'
 import carrier from './role/carrier'
+import repairer from './role/repairer'
+import tower from './structures/tower'
+
 
 export const loop = errorMapper(() => {
     
@@ -12,18 +15,31 @@ export const loop = errorMapper(() => {
     mc.run()
     
 
-    qc.run('upgrader',1);
+    for (let roomname in Game.rooms){
+
+        const room = Game.rooms[roomname];
+        const creep = room.find(FIND_HOSTILE_CREEPS);
+        if (creep.length > 0){
+
+            tower.attack(creep);
+        }
+    }
+
+
+
+    qc.run('upgrader',2);
     qc.run('builder',1);
     qc.run('carrier',1);
     qc.run('worker',1);
-    
+    qc.run('repairer',1);
+
     
     for (let name in Game.creeps){
     
         let creep : Creep = Game.creeps[name];
         
         if (creep.memory.role === 'upgrader'){
-        
+            
             upgrader.run(creep);
             
         }
@@ -43,6 +59,12 @@ export const loop = errorMapper(() => {
             
             worker.run(creep);
         
+        }
+
+        else if (creep.memory.role === 'repairer'){
+
+            repairer.run(creep);
+
         }
     }
 })
