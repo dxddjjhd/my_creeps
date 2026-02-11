@@ -7,6 +7,7 @@ import worker from './role/worker'
 import carrier from './role/carrier'
 import repairer from './role/repairer'
 import tower from './structures/tower'
+import oc from './explore/outsideControiier'
 
 
 export const loop = errorMapper(() => {
@@ -24,17 +25,18 @@ export const loop = errorMapper(() => {
             tower.attack(creep);
         }
     }
-
-    qc.run('carrier',1);
-    qc.run('worker',1);
-    qc.run('upgrader',1);
-    qc.run('builder',2);
-    qc.run('repairer',1);
-
     
-    for (let name in Game.creeps){
+    qc.run('carrier',1,'internal');
+    qc.run('worker',1,'internal');
+    qc.run('upgrader',1,'internal');
+    qc.run('builder',1,'internal');
+    qc.run('repairer',1,'internal');
+
+
+    const creeps = Object.values(Game.creeps).filter((creep) => {return creep.memory.tag === 'internal'});
+    for (let creep of creeps){
     
-        let creep : Creep = Game.creeps[name];
+        
         
         if (creep.memory.role === 'upgrader'){
             
@@ -65,5 +67,7 @@ export const loop = errorMapper(() => {
 
         }
     }
+
+    oc.run();
 })
 

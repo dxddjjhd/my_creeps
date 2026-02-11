@@ -18,12 +18,14 @@ const repairer = {
         if (creep.memory.mode === 'REPAIRING'){
 
             const targets = creep.room.find(FIND_STRUCTURES,{filter : (structure) => 
-                {return structure.structureType === STRUCTURE_CONTAINER || 
-                    structure.structureType === STRUCTURE_SPAWN || 
+                {return ((structure.structureType === STRUCTURE_SPAWN || 
                     structure.structureType === STRUCTURE_TOWER || 
                     structure.structureType === STRUCTURE_EXTENSION || 
-                    structure.structureType === STRUCTURE_STORAGE && 
-                    structure.hits < structure.hitsMax
+                    structure.structureType === STRUCTURE_CONTAINER ||
+                    structure.structureType === STRUCTURE_STORAGE) && 
+                    structure.hits < structure.hitsMax) || 
+                    (structure.structureType === STRUCTURE_ROAD && 
+                    structure.hits < (structure.hitsMax * 0.5))
                 }})
             
             if (creep.repair(targets[0]) === ERR_NOT_IN_RANGE){

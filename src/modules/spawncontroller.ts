@@ -3,7 +3,7 @@ import ct from '@/constants'
 
 const sc = {
 
-    spawn : (spawnname:string,type:'upgrader'|'harvester'|'builder'|'worker'|'carrier'|'repairer'): void => {
+    spawn : (spawnname:string,type:CreepType,tag:CreepTag,target:string = null): void => {
 
         if (Game.spawns[spawnname]){
         
@@ -18,10 +18,8 @@ const sc = {
             if (spawning === null && (freecapacity ?? 0) === 0){  
                     
                 const newname : string= 'creep' + Game.time;                                        
-                    
-                    
         
-                spawn.spawnCreep(ct.creep[type],newname,{ memory : { role : type}});
+                spawn.spawnCreep(ct.creep[type],newname,{ memory : { role : type,tag : tag,target : target}});
         
             } else if (spawning !== null){
         
